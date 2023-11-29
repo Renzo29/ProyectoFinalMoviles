@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "779595244683",
+    "project_id": "proyecto-burguer",
+    "storage_bucket": "proyecto-burguer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779595244683:android:3af2ea285716348f9da08e",
+        "android_client_info": {
+          "package_name": "com.example.agregar_editar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkHvoXzrxmMMNSK-gk-rfYw9PjsZvG840"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
