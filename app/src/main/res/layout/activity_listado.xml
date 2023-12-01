@@ -8,13 +8,13 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Input_buscar"
-        android:layout_width="327dp"
-        android:layout_height="51dp"
+        android:layout_width="234dp"
+        android:layout_height="49dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="53dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -41,13 +41,24 @@
         android:layout_width="318dp"
         android:layout_height="496dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/Input_buscar"
+        app:layout_constraintEnd_toEndOf="@+id/btn_buscar"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/Input_buscar"
         app:layout_constraintTop_toBottomOf="@+id/txt_resultado"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btn_buscar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buscar"
+        android:onClick="buscarHamburguesa"
+        app:layout_constraintBottom_toBottomOf="@+id/Input_buscar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.692"
+        app:layout_constraintStart_toEndOf="@+id/Input_buscar"
+        app:layout_constraintTop_toTopOf="@+id/Input_buscar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

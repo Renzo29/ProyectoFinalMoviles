@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutName" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutSearch"
+        android:id="@+id/txt_buscar"
         style="?attr/textInputStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -88,12 +88,12 @@
             android:ems="10"
             android:hint="Buscar"
             android:inputType="textFilter"
-            android:selectAllOnFocus="true"
-            android:text="Buscar" />
+            android:onClick="buscarHamburguesa"
+            android:selectAllOnFocus="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/textViewResultados"
+        android:id="@+id/txt_resultados"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -104,7 +104,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutSearch" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_buscar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_list"
@@ -117,6 +117,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewResultados" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_resultados" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
