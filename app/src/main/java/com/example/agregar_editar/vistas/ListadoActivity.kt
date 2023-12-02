@@ -1,4 +1,5 @@
-package com.example.agregar_editar.vistas
+package com.example.agregar_editar
+
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,12 +10,12 @@ import android.widget.Toast
 import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.agregar_editar.MainActivity
 import com.example.agregar_editar.R
 import com.example.agregar_editar.adapter.HamburguesaAdapter
 import com.example.agregar_editar.entity.Hamburguesa_list
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -85,4 +86,10 @@ class ListadoActivity : AppCompatActivity() {
     fun editar(view: View){
         startActivity(Intent(this, MainActivity::class.java))
     }
+
+    fun logout(view: View){
+        com.google.firebase.Firebase.auth.signOut()
+        startActivity(Intent(this,MainActivity::class.java))
+    }
+
 }
