@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.agregar_editar.R
 import com.example.agregar_editar.adapter.HamburguesaAdapter
 import com.example.agregar_editar.entity.Hamburguesa_list
+import com.example.agregar_editar.vistas.AgregarActivity
 
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -89,7 +90,7 @@ class ListadoActivity : AppCompatActivity() {
     }
 
     fun add(view: View){
-        startActivity(Intent(this,Agregar::class.java))
+        startActivity(Intent(this,AgregarActivity::class.java))
     }
 
     fun logout(view: View){
