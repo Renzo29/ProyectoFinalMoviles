@@ -1,5 +1,6 @@
-package com.example.agregar_editar.vistas
+package com.example.agregar_editar
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -37,31 +38,76 @@ class Agregar : AppCompatActivity() {
 
     fun agregarHamburguesa(view: View) {
 
-        val imagen = txtImagen.text.toString()
-        val codigo = txtCodigo.text.toString()
-        val nombre = txtNombre.text.toString()
-        val descripcion = txtDescripcion.text.toString()
-        val preparacion = txtPreparacion.toString()
-        val tipoPan: String
+        if (!camposSonValidos()) {
+            return
+        }
 
-        val radioButtonSeleccionadoId = radioPan.checkedRadioButtonId
 
-        val radioButtonSeleccionado: RadioButton = findViewById(radioButtonSeleccionadoId)
-        tipoPan = radioButtonSeleccionado.text.toString()
-
-        val hamburguesa = Hamburguesa_list(codigo, nombre, descripcion, imagen, tipoPan)
+        val hamburguesa = Hamburguesa_list(
+            txtCodigo.text.toString().trim(),
+            txtNombre.text.toString().trim(),
+            txtDescripcion.text.toString().trim(),
+            txtImagen.text.toString().trim(),
+            obtenerTipoPan(),
+            txtPreparacion.text.toString().trim()
+        )
 
         db.collection("Hamburguesa_lista")
             .add(hamburguesa)
             .addOnSuccessListener { documentReference ->
-
                 Toast.makeText(this, "¡Hamburguesa añadida!", Toast.LENGTH_SHORT).show()
                 println("Documento agregado con ID: ${documentReference.id}")
+                limpiarCampos()
             }
             .addOnFailureListener { e ->
-
                 Toast.makeText(this, "¡Ocurrió un error al añadir!", Toast.LENGTH_SHORT).show()
                 println("Error al agregar documento: $e")
             }
     }
+
+
+    private fun camposSonValidos(): Boolean {
+        val imagen = txtImagen.text.toString().trim()
+        val codigo = txtCodigo.text.toString().trim()
+        val nombre = txtNombre.text.toString().trim()
+        val descripcion = txtDescripcion.text.toString().trim()
+        val preparacion = txtPreparacion.text.toString().trim()
+
+        if (codigo.isEmpty() || nombre.isEmpty() || descripcion.isEmpty() || preparacion.isEmpty() || imagen.isEmpty()) {
+            Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        val radioButtonSeleccionadoId = radioPan.checkedRadioButtonId
+        if (radioButtonSeleccionadoId == -1) {
+            Toast.makeText(this, "Por favor, seleccione el tipo de pan", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        return true
+    }
+
+
+    private fun limpiarCampos() {
+        txtCodigo.text.clear()
+        txtNombre.text.clear()
+        txtImagen.text.clear()
+        txtDescripcion.text.clear()
+        txtPreparacion.text.clear()
+        radioPan.clearCheck()
+    }
+
+
+    private fun obtenerTipoPan(): String {
+        val radioButtonSeleccionadoId = radioPan.checkedRadioButtonId
+        val radioButtonSeleccionado: RadioButton = findViewById(radioButtonSeleccionadoId)
+        return radioButtonSeleccionado.text.toString()
+    }
+
+
+
+    fun cancelar(view: View){
+        startActivity(Intent(this,ListadoActivity::class.java))
+    }
+
 }

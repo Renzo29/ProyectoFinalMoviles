@@ -54,6 +54,7 @@
         android:layout_width="158dp"
         android:layout_height="51dp"
         android:text="Cancelar"
+        android:onClick="cancelar"
         app:layout_constraintBottom_toBottomOf="@+id/btn_agregar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -260,7 +261,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_codigo"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:srcCompat="@drawable/burger2" />
 
     <TextView
         android:id="@+id/textView15"

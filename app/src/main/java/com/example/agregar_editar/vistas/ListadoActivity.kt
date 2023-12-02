@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.agregar_editar.R
 import com.example.agregar_editar.adapter.HamburguesaAdapter
 import com.example.agregar_editar.entity.Hamburguesa_list
+
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.auth
@@ -85,6 +86,10 @@ class ListadoActivity : AppCompatActivity() {
 
     fun editar(view: View){
         startActivity(Intent(this, MainActivity::class.java))
+    }
+
+    fun add(view: View){
+        startActivity(Intent(this,Agregar::class.java))
     }
 
     fun logout(view: View){
