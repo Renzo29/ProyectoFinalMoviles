@@ -4,6 +4,7 @@ package com.example.agregar_editar
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -84,12 +85,36 @@ class ListadoActivity : AppCompatActivity() {
 
 
 
-    fun editar(view: View){
-        startActivity(Intent(this, MainActivity::class.java))
+
+    fun editar(view: View) {
+        // Obtén el nombre de la hamburguesa
+        val nombreHamburguesa = obtenerNombreHamburguesaDesdeVista(view)
+
+        // Imprime el nombre en la consola
+        Log.d("ListadoActivity", "Nombre de la hamburguesa: $nombreHamburguesa")
+
+        // Luego, abre la actividad de edición
+        abrirActividadEdicion(nombreHamburguesa)
     }
 
+    private fun obtenerNombreHamburguesaDesdeVista(view: View): String {
+        try {
+            val txtNombre = view.findViewById<TextView>(R.id.txt_nombre)
+            return txtNombre.text.toString()
+        } catch (e: Exception) {
+            Log.e("ListadoActivity", "Error al obtener el nombre de la hamburguesa: $e")
+            return "Error"
+        }
+    }
+
+    private fun abrirActividadEdicion(nombreHamburguesa: String) {
+
+        val intent = Intent(this, EditarActivity::class.java)
+        intent.putExtra("nombre", nombreHamburguesa)
+        startActivity(intent)
+    }
     fun add(view: View){
-        startActivity(Intent(this,Agregar::class.java))
+        startActivity(Intent(this,AgregarActivity::class.java))
     }
 
     fun logout(view: View){
