@@ -72,6 +72,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:text="INGRESAR"
+        android:onClick="login"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
