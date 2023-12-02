@@ -22,7 +22,8 @@
             android:name=".SignupActivity"  />
         <activity
             android:name=".RecoveryActivity"  />
-        <activity android:name=".Agregar"/>
+        <activity android:name=".AgregarActivity"/>
+        <activity android:name=".EditarActivity"/>
         <activity
             android:name=".ListadoActivity"
             android:exported="true">
