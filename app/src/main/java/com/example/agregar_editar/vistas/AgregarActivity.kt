@@ -29,6 +29,7 @@ class AgregarActivity : AppCompatActivity() {
     lateinit var txtPreparacion: EditText
     lateinit var txtImagen: EditText
     lateinit var radioPan: RadioGroup
+    lateinit var cantidad: EditText
     val ingredientesList = mutableListOf<IngredienteCheckBox>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +41,7 @@ class AgregarActivity : AppCompatActivity() {
         txtDescripcion = findViewById(R.id.txt_deschamburguesa)
         txtPreparacion = findViewById(R.id.txt_preparacion)
         radioPan = findViewById(R.id.rd_tipo_pan)
+
 
         db.collection("Ingredientes")
             .get()
@@ -53,8 +55,12 @@ class AgregarActivity : AppCompatActivity() {
                 val layoutManager = LinearLayoutManager(this)
                 recyclerView.layoutManager = layoutManager
 
-                val adapter = IngredienteAdapter(ingredientesList) { ingrediente ->
-                }
+                val adapter = IngredienteAdapter(
+                    ingredientesList,
+                    onIngredientCheckedListener = { ingrediente ->
+                    },
+                    onEditTextChangedListener = { ingrediente, editTextValue ->
+                    })
                 recyclerView.adapter = adapter
             }
             .addOnFailureListener { exception ->
@@ -72,6 +78,7 @@ class AgregarActivity : AppCompatActivity() {
             txtNombre.text.toString().trim(),
             txtDescripcion.text.toString().trim(),
             txtImagen.text.toString().trim(),
+
             obtenerTipoPan(),
             txtPreparacion.text.toString().trim()
         )
@@ -86,7 +93,10 @@ class AgregarActivity : AppCompatActivity() {
                 val ingredientesSeleccionados = ingredientesList.filter { it.isSelected }
 
                 for (ingrediente in ingredientesSeleccionados) {
-                    agregarDetalleHamburguesa(idHamburguesa, ingrediente.ingrediente)
+
+                    val editTextValue = ingrediente.editTextValue
+
+                    agregarDetalleHamburguesa(idHamburguesa, ingrediente.ingrediente, editTextValue)
                 }
 
                 limpiarCampos()
@@ -131,10 +141,10 @@ class AgregarActivity : AppCompatActivity() {
         startActivity(Intent(this, ListadoActivity::class.java))
     }
 
-    private fun agregarDetalleHamburguesa(idHamburguesa: String, ingrediente: Ingrediente) {
+    private fun agregarDetalleHamburguesa(idHamburguesa: String, ingrediente: Ingrediente, can: String) {
 
         val codigoIngrediente = ingrediente.codigo
-        val cantidad = 2
+        val cantidad = Integer.parseInt(can)
 
         val detalleHamburguesa = Detalle_Hamburguesa(idHamburguesa, codigoIngrediente, cantidad)
 
