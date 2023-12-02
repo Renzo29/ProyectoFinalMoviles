@@ -4,6 +4,6 @@ data class Hamburguesa_list(
     val codigo:String="",
     val nombre: String="",
     val descripcion: String="",
-    val imagen: String="") {
-
+    val imagen: String="",
+    val tipoPan: String = "") {
 }
