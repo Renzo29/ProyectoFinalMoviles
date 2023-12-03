@@ -41,21 +41,21 @@ class EditarActivity : AppCompatActivity() {
 
     private fun obtenerDatosHamburguesa() {
         val db = FirebaseFirestore.getInstance()
-        val nombre = intent.getStringExtra("nombre")
+        val codigo = "HAM001"
 
         db.collection("Hamburguesa_lista")
-            .whereEqualTo("nombre", nombre)
+            .whereEqualTo("codigo", codigo)
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     if (document.exists()) {
                         val hamburguesa = document.toObject(Hamburguesa_list::class.java)
+                        hamburguesaId = document.id // Asigna el ID del documento a hamburguesaId
                         mostrarDatosHamburguesa(hamburguesa)
                     }
                 }
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Error al obtener datos: $e", Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -85,7 +85,6 @@ class EditarActivity : AppCompatActivity() {
         val codigo = txtCodigo.text.toString()
         val nombre = txtNombre.text.toString()
         val descripcion = txtDescripcion.text.toString()
-        val preparacion = txtPreparacion.text.toString()
         val tipoPan: String
 
         val radioButtonSeleccionadoId = radioPan.checkedRadioButtonId

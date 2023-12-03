@@ -6,5 +6,5 @@ data class Hamburguesa_list(
     val descripcion: String="",
     val imagen: String="",
     val tipoPan: String = "",
-    val tiempoPreparacion: String = "") {
+    val preparacion: String = "") {
 }

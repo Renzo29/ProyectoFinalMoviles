@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.agregar_editar.R
 import com.example.agregar_editar.adapter.HamburguesaAdapter
 import com.example.agregar_editar.entity.Hamburguesa_list
-import com.example.agregar_editar.vistas.AgregarActivity
+import com.example.agregar_editar.AgregarActivity
 
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -34,6 +34,7 @@ class ListadoActivity : AppCompatActivity() {
         txtEncontrados = findViewById(R.id.txt_resultados)
         recyclerView = findViewById(R.id.recycler_list)
         txtBuscar = findViewById(R.id.txt_buscar)
+        listar("")
         /*val db = Firebase.firestore
 
         val lista = mutableListOf<Hamburguesa_list>()
@@ -67,7 +68,7 @@ class ListadoActivity : AppCompatActivity() {
 
                 val cantidad = adapter.listaFiltrada.size
 
-                txtEncontrados.text = " $cantidad Hamburguesas encontradas"
+                txtEncontrados.text = " $cantidad Hamburguesas registradas"
             }
             .addOnFailureListener {
                 Toast.makeText(baseContext, "Error al cargar", Toast.LENGTH_SHORT).show()

@@ -12,7 +12,7 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/burger2"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -24,6 +24,7 @@
             android:name=".RecoveryActivity"  />
         <activity android:name=".AgregarActivity"/>
         <activity android:name=".EditarActivity"/>
+
         <activity
             android:name=".ListadoActivity"
             android:exported="true">
